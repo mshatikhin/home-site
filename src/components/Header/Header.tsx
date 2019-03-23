@@ -1,23 +1,17 @@
 import styles from './Header.module.css';
-import React, { Component } from 'react';
+import React from 'react';
 
-export default class Header extends Component {
-  constructor(props: any) {
-    super(props);
-  }
+const Header: React.FC = () => (
+  <div className={styles.header}>
+    <div className={styles.headerWrapper}>
+      <a href="/" className={styles.logoLink}>
+        <span className={styles.logoText}>
+          photography <span className={styles.love}>♥</span>
+        </span>
+        <span className={styles.logoMainText}>MIKHAIL SHATIKHIN</span>
+      </a>
+    </div>
+  </div>
+);
 
-  render() {
-    return (
-      <div className={styles.header}>
-        <div className={styles.headerWrapper}>
-          <a href="/" className={styles.logoLink}>
-            <span className={styles.logoText}>
-              photography <span className={styles.love}>♥</span>
-            </span>
-            <span className={styles.logoMainText}>MIKHAIL SHATIKHIN</span>
-          </a>
-        </div>
-      </div>
-    );
-  }
-}
+export default Header;

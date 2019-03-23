@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './Home.module.css';
-import Slider from './Slider';
 import Landing from './Landing';
+import Slider from '../../components/Slider';
 
 const images = [
   require('./images/1.jpg'),
@@ -37,32 +37,28 @@ interface State {
   showLanding?: boolean;
 }
 
-export default class Home extends React.Component<{}, State> {
-  state: State = {};
+const Home: React.FC = () => {
+  const initSlide = bestImages[getRandomArbitary(1, bestImages.length)];
+  const [showLanding, setShowLanding] = useState<State>({ showLanding: false });
 
-  render() {
-    const initSlide = bestImages[getRandomArbitary(1, bestImages.length)];
-
-    return (
-      <div className={styles.root}>
-        <div className={styles.wrapper}>
-          <Slider initialSlide={initSlide}>
-            {images.map((img, index) => (
-              <div key={index} className={styles.imgWrap}>
-                <img src={img} className={styles.img} onLoad={this.onLoad} />
-              </div>
-            ))}
-          </Slider>
-        </div>
-        {this.state.showLanding && <Landing />}
-      </div>
-    );
-  }
-
-  onLoad = () => {
-    !this.state.showLanding &&
-      this.setState({
-        showLanding: true
-      });
+  const onLoad = () => {
+    !showLanding && setShowLanding({ showLanding: true });
   };
-}
+
+  return (
+    <div className={styles.root}>
+      <div className={styles.wrapper}>
+        <Slider initialSlide={initSlide}>
+          {images.map((img, index) => (
+            <div key={index} className={styles.imgWrap}>
+              <img src={img} className={styles.img} onLoad={onLoad} />
+            </div>
+          ))}
+        </Slider>
+      </div>
+      {showLanding && <Landing />}
+    </div>
+  );
+};
+
+export default Home;
