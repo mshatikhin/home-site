@@ -1,16 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="theme-color" content="#000000">
-    <!--
-      manifest.json provides metadata used when your web app is added to the
-      homescreen on Android. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
-    <!--
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="theme-color" content="#000000">
+
+  <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
       Only files inside the `public` folder can be referenced from the HTML.
@@ -19,22 +15,112 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>React App</title>
-  </head>
-  <body>
-    <noscript>
-      You need to enable JavaScript to run this app.
-    </noscript>
-    <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
+  <title>Mikhail Shatikhin photographer</title>
+  <meta name="description" content="Welcome to my website." />
 
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
-  </body>
+  <!-- Schema.org markup (Google) -->
+  <meta itemprop="name" content="Mikhail Shatikhin photographer">
+  <meta itemprop="description" content="Welcome to my website.">
+  <meta itemprop="image" content="//mshatikhin.ru/promo.jpg">
+
+  <!-- Twitter Card markup-->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@mshatikhin">
+  <meta name="twitter:title" content="Mikhail Shatikhin photographer">
+  <meta name="twitter:description" content="Welcome to my website.">
+  <meta name="twitter:creator" content="@mshatikhin">
+  <!-- Twitter summary card with large image must be at least 280x150px -->
+  <meta name="twitter:image" content="//mshatikhin.ru/promo.jpg">
+  <meta name="twitter:image:alt" content="Welcome to my website.">
+
+  <!-- Open Graph markup (Facebook, Pinterest) -->
+  <meta property="og:title" content="Mikhail Shatikhin photographer" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="//mshatikhin.ru" />
+  <meta property="og:image" content="//mshatikhin.ru/promo.jpg" />
+  <meta property="og:description" content="Welcome to my website." />
+  <meta property="og:site_name" content="mshatikhin.ru" />
+
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+  <link rel="apple-touch-icon" sizes="57x57" href="%PUBLIC_URL%/favicon/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="%PUBLIC_URL%/favicon/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="%PUBLIC_URL%/favicon/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="%PUBLIC_URL%/favicon/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="%PUBLIC_URL%/favicon/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="%PUBLIC_URL%/favicon/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="%PUBLIC_URL%/favicon/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="%PUBLIC_URL%/favicon/apple-touch-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="%PUBLIC_URL%/favicon/apple-touch-icon-180x180.png">
+  <link rel="icon" type="image/png" href="%PUBLIC_URL%/favicon/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="%PUBLIC_URL%/favicon/android-chrome-192x192.png" sizes="192x192">
+  <link rel="icon" type="image/png" href="%PUBLIC_URL%/favicon/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="%PUBLIC_URL%/favicon/favicon-16x16.png" sizes="16x16">
+  <link rel="manifest" href="%PUBLIC_URL%/favicon/manifest.json">
+  <link rel="mask-icon" href="%PUBLIC_URL%/favicon/safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="shortcut icon" href="%PUBLIC_URL%/favicon/favicon.ico">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="msapplication-TileImage" content="%PUBLIC_URL%/favicon/mstile-144x144.png">
+  <meta name="msapplication-config" content="%PUBLIC_URL%/favicon/browserconfig.xml">
+  <meta name="theme-color" content="#ffffff">
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:300" rel="stylesheet">
+
+
+</head>
+
+<body>
+  <noscript>
+    You need to enable JavaScript to run this app.
+  </noscript>
+  <div id="root"></div>
+  <!-- Yandex.Metrika counter -->
+  <script type="text/javascript">
+    (function (d, w, c) {
+      (w[c] = w[c] || []).push(function () {
+        try {
+          w.yaCounter51367360 = new Ya.Metrika2({
+            id: 51367360,
+            clickmap: true,
+            trackLinks: true,
+            accurateTrackBounce: true,
+            webvisor: true
+          });
+        } catch (e) {}
+      });
+
+      var n = d.getElementsByTagName("script")[0],
+        s = d.createElement("script"),
+        f = function () {
+          n.parentNode.insertBefore(s, n);
+        };
+      s.type = "text/javascript";
+      s.async = true;
+      s.src = "https://mc.yandex.ru/metrika/tag.js";
+
+      if (w.opera == "[object Opera]") {
+        d.addEventListener("DOMContentLoaded", f, false);
+      } else {
+        f();
+      }
+    })(document, window, "yandex_metrika_callbacks2");
+  </script>
+  <noscript>
+    <div><img src="https://mc.yandex.ru/watch/51367360" style="position:absolute; left:-9999px;" alt="" /></div>
+  </noscript>
+  <!-- /Yandex.Metrika counter -->
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-49541908-4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-49541908-4');
+  </script>
+</body>
+
 </html>
