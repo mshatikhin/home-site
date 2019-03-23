@@ -1,0 +1,65 @@
+.header {
+    display: block;
+    height: auto;
+    max-width: 100%;
+    padding: 40px 0 40px 0;
+    width: 100%;
+}
+
+.headerWrapper {
+    margin: 0 auto;
+    max-width: 100%;
+    text-align: center;
+    width: 960px;
+}
+
+.menu {
+    margin: 0 auto;
+    max-width: 100%;
+    text-align: center;
+}
+
+.logoLink {
+    font-weight: 300;
+    font-family: 'Source Code Pro', monospace;
+}
+
+.logoText {
+    font-size: 18px;
+    display: block;
+    color: #aaa;
+}
+
+.logoMainText {
+    display: block;
+    font-size: 30px;
+    color: #000;
+    letter-spacing: 1.2px;
+}
+
+.love {
+    color: red;
+    transition: .2s font ease;
+    animation: love infinite;
+    animation-play-state: running;
+}
+
+@keyframes love {
+    0% {
+        font-size: 14px;
+    }
+    100% {
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 950px) {
+    .headerWrapper {
+        padding-bottom: 0;
+        text-align: center;
+    }
+
+    .menu {
+        position: static;
+    }
+}

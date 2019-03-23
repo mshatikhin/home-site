@@ -1,0 +1,69 @@
+.root {
+    position: relative;
+    overflow: hidden;
+    white-space: nowrap;
+    max-width: 100%;
+}
+
+.imageWrap {
+    display: inline-block;
+    vertical-align: middle;
+    max-width: 100%;
+}
+
+.control {
+    height: 32px;
+    width: 20px;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    margin-top: -16px;
+    transition: opacity 300ms ease;
+    z-index: 1;
+}
+
+.leftControl {
+    background: url("./images/controls.png") 0 -25px;
+    left: 18px;
+}
+
+.rightControl {
+    background: url("./images/controls.png") 0 -63px;
+    right: 18px;
+}
+
+.controlWrapper {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100px;
+    opacity: .5;
+    z-index: 1;
+}
+
+.controlWrapperLeft {
+    left: 0;
+}
+
+.controlWrapperRight {
+    right: 0;
+}
+
+.controlWrapperLeft:hover {
+    cursor: pointer;
+    background: linear-gradient(to left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2));
+    opacity: 1;
+}
+
+.controlWrapperRight:hover {
+    cursor: pointer;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2));
+    opacity: 1;
+}
+
+.slides {
+    margin-left: 0;
+    transition: 400ms all ease;
+    font-size: 0;
+    max-width: 100%;
+}

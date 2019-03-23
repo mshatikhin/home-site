@@ -1,17 +1,14 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Home from './pages/Home';
+import Header from './components/Header';
+import About from './pages/About';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-        </header>
-      </div>
-    );
-  }
-}
+const App: React.FC = () => (
+  <div>
+    <Header />
+    <Home />
+    <About />
+  </div>
+);
 
 export default App;
