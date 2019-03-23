@@ -51,11 +51,12 @@ class Slider extends Component<Props, State> {
   };
 
   getWidthSlider = (): number => {
-    const slider = this.sliderElement.current!;
+    const slider = this.sliderElement.current;
     if (slider) {
       let computedStyle = getComputedStyle(slider);
       let width = computedStyle.width;
-      return parseInt(width || '', 10);
+      const w = parseInt(width || '', 10);
+      return isNaN(w) ? 0 : w;
     }
     return 0;
   };
