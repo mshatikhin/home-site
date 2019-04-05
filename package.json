@@ -3,14 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@types/jest": "24.0.11",
-    "@types/node": "11.11.5",
-    "@types/react": "16.8.8",
-    "@types/react-dom": "16.8.3",
     "react": "16.8.4",
     "react-dom": "16.8.4",
-    "react-scripts": "2.1.8",
-    "typescript": "3.3.4000",
     "cross-fetch": "3.0.2"
   },
   "scripts": {
@@ -27,5 +21,13 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "@types/jest": "24.0.11",
+    "@types/node": "11.11.5",
+    "@types/react": "16.8.8",
+    "@types/react-dom": "16.8.3",
+    "react-scripts": "2.1.8",
+    "typescript": "3.3.4000"
+  }
 }

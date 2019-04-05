@@ -38,13 +38,18 @@ exports.__esModule = true;
 var cross_fetch_1 = require("cross-fetch");
 var express = require('express');
 var path = require('path');
+var bodyParser = require('body-parser');
 var app = express();
 var FLICKR_USER_ID = '124274905@N03';
 var FLICKR_API_KEY = '1173960c94df6700f0b57dccc50f0925';
 var PORT = process.env.APP_PORT || 8080;
 var IP = process.env.APP_IP || '127.0.0.1';
 var STATIC_BUILD_DIRECTORY = 'build';
-app.use(express.static(path.join(__dirname, STATIC_BUILD_DIRECTORY)));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+/**
+ * API
+ */
 app.get('/api/albums', function (req, res) {
     return __awaiter(this, void 0, void 0, function () {
         var response, resp, e_1;
@@ -58,10 +63,12 @@ app.get('/api/albums', function (req, res) {
                     return [4 /*yield*/, response.json()];
                 case 2:
                     resp = _a.sent();
-                    return [2 /*return*/, res.status(200).json(resp)];
+                    res.status(200).send(resp);
+                    return [3 /*break*/, 4];
                 case 3:
                     e_1 = _a.sent();
-                    return [2 /*return*/, res.status(500).json({ error: e_1 })];
+                    res.status(500).json({ error: e_1 });
+                    return [3 /*break*/, 4];
                 case 4: return [2 /*return*/];
             }
         });
@@ -70,12 +77,18 @@ app.get('/api/albums', function (req, res) {
 app.get('/api/test', function (req, res) {
     return __awaiter(this, void 0, void 0, function () {
         return __generator(this, function (_a) {
-            return [2 /*return*/, res.status(200).json({ message: 'test' })];
+            res.status(200).json({ message: 'test' });
+            return [2 /*return*/];
         });
     });
 });
-app.get('/', function (req, res) {
+/**
+ * STATIC FILES
+ */
+app.use('/', express.static(path.join(__dirname, STATIC_BUILD_DIRECTORY)));
+app.get('*', function (req, res) {
     res.sendFile(path.join(__dirname, STATIC_BUILD_DIRECTORY, 'index.html'));
 });
 app.listen(PORT);
-console.log('__Server running at http://%s:%s/', IP, PORT);
+console.log('__Server running at http://%s:%s/__', IP, PORT);
+module.exports = app;
