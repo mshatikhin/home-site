@@ -43,7 +43,8 @@ var FLICKR_USER_ID = '124274905@N03';
 var FLICKR_API_KEY = '1173960c94df6700f0b57dccc50f0925';
 var PORT = process.env.APP_PORT || 8080;
 var IP = process.env.APP_IP || '127.0.0.1';
-app.use(express.static(path.join(__dirname, 'build')));
+var STATIC_BUILD_DIRECTORY = 'build';
+app.use(express.static(path.join(__dirname, STATIC_BUILD_DIRECTORY)));
 app.get('/api/albums', function (req, res) {
     return __awaiter(this, void 0, void 0, function () {
         var response, resp, e_1;
@@ -60,7 +61,7 @@ app.get('/api/albums', function (req, res) {
                     return [2 /*return*/, res.status(200).json(resp)];
                 case 3:
                     e_1 = _a.sent();
-                    return [2 /*return*/, res.status(404).json({ error: e_1 })];
+                    return [2 /*return*/, res.status(500).json({ error: e_1 })];
                 case 4: return [2 /*return*/];
             }
         });
@@ -74,7 +75,7 @@ app.get('/api/test', function (req, res) {
     });
 });
 app.get('/', function (req, res) {
-    res.sendFile(path.join(__dirname, 'build', 'index.html'));
+    res.sendFile(path.join(__dirname, STATIC_BUILD_DIRECTORY, 'index.html'));
 });
 app.listen(PORT);
-console.log('Server running at http://%s:%s/', IP, PORT);
+console.log('__Server running at http://%s:%s/', IP, PORT);

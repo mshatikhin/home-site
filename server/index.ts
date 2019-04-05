@@ -8,8 +8,9 @@ const FLICKR_API_KEY = '1173960c94df6700f0b57dccc50f0925';
 
 const PORT = process.env.APP_PORT || 8080;
 const IP = process.env.APP_IP || '127.0.0.1';
+const STATIC_BUILD_DIRECTORY = 'build';
 
-app.use(express.static(path.join(__dirname, 'build')));
+app.use(express.static(path.join(__dirname, STATIC_BUILD_DIRECTORY)));
 
 app.get('/api/albums', async function(req: any, res: any) {
   try {
@@ -19,7 +20,7 @@ app.get('/api/albums', async function(req: any, res: any) {
     const resp = await response.json();
     return res.status(200).json(resp);
   } catch (e) {
-    return res.status(404).json({ error: e });
+    return res.status(500).json({ error: e });
   }
 });
 
@@ -28,8 +29,8 @@ app.get('/api/test', async function(req: any, res: any) {
 });
 
 app.get('/', function(req: any, res: any) {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+  res.sendFile(path.join(__dirname, STATIC_BUILD_DIRECTORY, 'index.html'));
 });
 
 app.listen(PORT);
-console.log('Server running at http://%s:%s/', IP, PORT);
+console.log('__Server running at http://%s:%s/', IP, PORT);
