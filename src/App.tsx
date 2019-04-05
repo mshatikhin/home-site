@@ -9,7 +9,7 @@ const App: React.FC = () => (
     <Header />
     <Home />
     <About />
-    <Portfolio />
+    {/*<Portfolio />*/}
   </div>
 );
 
