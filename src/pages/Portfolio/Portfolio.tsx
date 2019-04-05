@@ -2,39 +2,8 @@
 import styles from './Portfolio.module.css';
 import { Loader } from '../../components/Loader';
 import fetch from 'cross-fetch';
-
-interface PhotosetsResponse {
-  photosets: Photosets;
-  stat: 'ok';
-}
-
-interface Photosets {
-  page: number;
-  pages: number;
-  perpage: number;
-  photoset: Photoset[];
-  total: number;
-}
-
-interface Photoset {
-  id: string;
-  title: {
-    _content: string;
-  };
-  photos: number;
-  primary_photo_extras: {
-    url_z: string;
-    width_z: number;
-    height_z: number;
-  };
-}
-
-enum RequestStatus {
-  Default,
-  IsFetching,
-  IsLoaded,
-  IsFailed
-}
+import { Photoset, PhotosetsResponse } from './types';
+import { RequestStatus } from '../../util.types';
 
 interface State {
   albums: Photoset[];
