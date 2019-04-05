@@ -1,125 +1,147 @@
 .main {
-    display: block;
-    margin: auto;
-    width: 1465px;
-    max-width: 100%;
+  display: block;
+  margin: auto;
+  width: 1465px;
+  max-width: 100%;
 }
 
 .mainImage {
-    display: block;
-    max-width: none;
-    min-width: 455px;
-    object-fit: cover;
+  display: block;
+  max-width: none;
+  min-width: 455px;
+  object-fit: cover;
 }
 
 .album {
-    display: inline-block;
-    vertical-align: top;
-    margin: 20px;
+  display: inline-block;
+  vertical-align: top;
+  margin: 20px;
 }
 
 .card {
-    display: inline-block;
-    vertical-align: top;
-    position: relative;
-    cursor: pointer;
-    overflow: hidden;
-    width: 455px;
-    height: 398px;
-    margin-right: 50px;
-    margin-bottom: 50px;
-    color: rgba(0, 0, 0, .870588);
-    background-color: rgb(255, 255, 255);
-    transition: all 450ms cubic-bezier(.23, 1, .32, 1) 0ms;
-    box-sizing: border-box;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    box-shadow: rgba(0, 0, 0, .117647) 0 1px 6px, rgba(0, 0, 0, .117647) 0 1px 4px;
-    border-radius: 2px;
+  display: inline-block;
+  vertical-align: top;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  width: 455px;
+  height: 398px;
+  margin-right: 50px;
+  margin-bottom: 50px;
+  color: rgba(0, 0, 0, 0.870588);
+  background-color: rgb(255, 255, 255);
+  transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  box-shadow: rgba(0, 0, 0, 0.117647) 0 1px 6px, rgba(0, 0, 0, 0.117647) 0 1px 4px;
+  border-radius: 2px;
 }
 
 .card:hover .meta {
-    height: 105px;
+  height: 105px;
 }
 
 .card:nth-child(3n) {
-    margin-right: 0;
+  margin-right: 0;
 }
 
 .meta {
-    text-align: left;
-    box-sizing: border-box;
-    bottom: -30px;
-    position: absolute;
-    width: 100%;
-    background: rgba(0, 0, 0, .5);
-    color: #fff;
-    transition: .2s all cubic-bezier(.215, .61, .355, 1);
-    padding: 10px 0 10px 20px;
-    height: 75px;
+  text-align: left;
+  box-sizing: border-box;
+  bottom: -30px;
+  position: absolute;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  transition: 0.2s all cubic-bezier(0.215, 0.61, 0.355, 1);
+  padding: 10px 0 10px 20px;
+  height: 75px;
 }
 
 .header {
-    box-sizing: border-box;
-    font-size: 14px;
-    line-height: 30px;
-    text-transform: uppercase;
-    height: 30px;
+  box-sizing: border-box;
+  font-size: 14px;
+  line-height: 30px;
+  text-transform: uppercase;
+  height: 30px;
 }
 
 .countPhotos {
-    font-size: 11px;
-    text-transform: uppercase;
-    height: 30px;
+  font-size: 11px;
+  text-transform: uppercase;
+  height: 30px;
 }
 
 .horizontalImage {
-    margin: 0 0 0 -25%;
+  margin: 0 0 0 -25%;
 }
 
 .verticalImage {
-    margin: -15% 0 0 0;
+  margin: -15% 0 0 0;
+}
+
+.btnRequest {
+  background: #56b354 none;
+  border: none;
+  border-radius: 2px;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 18px;
+  font-weight: normal;
+  line-height: 1.42857143;
+  margin-bottom: 0;
+  padding: 10px 22px;
+  text-align: center;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.btnRequest:hover {
+  background: #56b354 linear-gradient(to bottom, #45a743 5%, #56b354 100%);
 }
 
 @media screen and (max-width: 1500px) {
-    .main {
-        width: 960px;
-    }
+  .main {
+    width: 960px;
+  }
 
-    .card:nth-child(3n) {
-        margin-right: 50px;
-    }
+  .card:nth-child(3n) {
+    margin-right: 50px;
+  }
 
-    .card:nth-child(even) {
-        margin-right: 0;
-    }
+  .card:nth-child(even) {
+    margin-right: 0;
+  }
 }
 
 @media screen and (max-width: 980px) {
-    .main {
-        text-align: center;
-    }
+  .main {
+    text-align: center;
+  }
 
-    .card {
-        display: block;
-        margin: 0 auto 50px auto !important;
-    }
+  .card {
+    display: block;
+    margin: 0 auto 50px auto !important;
+  }
 }
 
 @media screen and (max-width: 500px) {
-    .main {
-        padding: 0;
-    }
+  .main {
+    padding: 0;
+  }
 
-    .mainImage {
-        display: block;
-        margin: 0;
-        max-width: 100%;
-        min-width: 100%;
-    }
+  .mainImage {
+    display: block;
+    margin: 0;
+    max-width: 100%;
+    min-width: 100%;
+  }
 
-    .card {
-        display: block;
-        width: 100%;
-        height: auto;
-    }
+  .card {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
 }

@@ -8,9 +8,8 @@ html {
 body {
   margin: 0;
   padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
+    'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #333;
@@ -43,8 +42,8 @@ button:focus {
   outline: none;
 }
 
-img[src=""] {
-  content: "";
+img[src=''] {
+  content: '';
 }
 
 input {
@@ -56,4 +55,11 @@ input[disabled] {
   color: #666;
   background-color: rgb(235, 235, 228);
   border-color: rgb(235, 235, 228);
+}
+
+.ReactModal__Body--open {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+  height: 100%;
 }

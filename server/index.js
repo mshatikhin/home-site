@@ -36,9 +36,9 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 exports.__esModule = true;
 var cross_fetch_1 = require("cross-fetch");
-var express = require('express');
-var path = require('path');
-var bodyParser = require('body-parser');
+var express = require("express");
+var bodyParser = require("body-parser");
+var path = require("path");
 var app = express();
 var FLICKR_USER_ID = '124274905@N03';
 var FLICKR_API_KEY = '1173960c94df6700f0b57dccc50f0925';
@@ -50,14 +50,19 @@ app.use(bodyParser.urlencoded({ extended: false }));
 /**
  * API
  */
+var getFlickrUrl = function (_a) {
+    var method = _a.method, params = _a.params;
+    return "https://api.flickr.com/services/rest/?method=" + method + "&api_key=" + FLICKR_API_KEY + "&user_id=" + FLICKR_USER_ID + "&" + params + "&format=json&nojsoncallback=1";
+};
 app.get('/api/albums', function (req, res) {
     return __awaiter(this, void 0, void 0, function () {
-        var response, resp, e_1;
+        var url, response, resp, e_1;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     _a.trys.push([0, 3, , 4]);
-                    return [4 /*yield*/, cross_fetch_1["default"]("https://api.flickr.com/services/rest/?method=flickr.photosets.getList&api_key=" + FLICKR_API_KEY + "&user_id=" + FLICKR_USER_ID + "&primary_photo_extras=url_z&format=json&nojsoncallback=1")];
+                    url = getFlickrUrl({ method: 'flickr.photosets.getList', params: '&primary_photo_extras=url_z' });
+                    return [4 /*yield*/, cross_fetch_1["default"](url)];
                 case 1:
                     response = _a.sent();
                     return [4 /*yield*/, response.json()];
@@ -67,7 +72,32 @@ app.get('/api/albums', function (req, res) {
                     return [3 /*break*/, 4];
                 case 3:
                     e_1 = _a.sent();
-                    res.status(500).json({ error: e_1 });
+                    res.status(404).json({ error: e_1 });
+                    return [3 /*break*/, 4];
+                case 4: return [2 /*return*/];
+            }
+        });
+    });
+});
+app.get('/api/albums/:photosetId', function (req, res) {
+    return __awaiter(this, void 0, void 0, function () {
+        var url, response, resp, e_2;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    _a.trys.push([0, 3, , 4]);
+                    url = getFlickrUrl({ method: 'flickr.photosets.getPhotos', params: "&photoset_id=" + req.params.photosetId });
+                    return [4 /*yield*/, cross_fetch_1["default"](url)];
+                case 1:
+                    response = _a.sent();
+                    return [4 /*yield*/, response.json()];
+                case 2:
+                    resp = _a.sent();
+                    res.status(200).send(resp);
+                    return [3 /*break*/, 4];
+                case 3:
+                    e_2 = _a.sent();
+                    res.status(404).json({ error: e_2 });
                     return [3 /*break*/, 4];
                 case 4: return [2 /*return*/];
             }
@@ -90,5 +120,5 @@ app.get('*', function (req, res) {
     res.sendFile(path.join(__dirname, STATIC_BUILD_DIRECTORY, 'index.html'));
 });
 app.listen(PORT);
-console.log('__Server running at http://%s:%s/__', IP, PORT);
+console.log('Server running at http://%s:%s/', IP, PORT);
 module.exports = app;

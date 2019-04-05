@@ -1,7 +1,8 @@
 import fetch from 'cross-fetch';
-const express = require('express');
-const path = require('path');
-const bodyParser = require('body-parser');
+import express = require('express');
+import bodyParser = require('body-parser');
+import * as path from 'path';
+
 const app = express();
 
 const FLICKR_USER_ID = '124274905@N03';
@@ -18,15 +19,29 @@ app.use(bodyParser.urlencoded({ extended: false }));
  * API
  */
 
-app.get('/api/albums', async function(req: any, res: any) {
+const getFlickrUrl = ({ method, params }: { method: string; params: string }) => {
+  return `https://api.flickr.com/services/rest/?method=${method}&api_key=${FLICKR_API_KEY}&user_id=${FLICKR_USER_ID}&${params}&format=json&nojsoncallback=1`;
+};
+
+app.get('/api/albums', async function(req, res) {
   try {
-    const response = await fetch(
-      `https://api.flickr.com/services/rest/?method=flickr.photosets.getList&api_key=${FLICKR_API_KEY}&user_id=${FLICKR_USER_ID}&primary_photo_extras=url_z&format=json&nojsoncallback=1`
-    );
+    const url = getFlickrUrl({ method: 'flickr.photosets.getList', params: '&primary_photo_extras=url_z' });
+    const response = await fetch(url);
     const resp = await response.json();
     res.status(200).send(resp);
   } catch (e) {
-    res.status(500).json({ error: e });
+    res.status(404).json({ error: e });
+  }
+});
+
+app.get('/api/albums/:photosetId', async function(req, res) {
+  try {
+    const url = getFlickrUrl({ method: 'flickr.photosets.getPhotos', params: `&photoset_id=${req.params.photosetId}` });
+    const response = await fetch(url);
+    const resp = await response.json();
+    res.status(200).send(resp);
+  } catch (e) {
+    res.status(404).json({ error: e });
   }
 });
 
@@ -45,6 +60,7 @@ app.get('*', function(req: any, res: any) {
 });
 
 app.listen(PORT);
-console.log('__Server running at http://%s:%s/__', IP, PORT);
+
+console.log('Server running at http://%s:%s/', IP, PORT);
 
 module.exports = app;

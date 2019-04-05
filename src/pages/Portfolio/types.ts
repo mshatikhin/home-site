@@ -3,15 +3,46 @@ export interface PhotosetsResponse {
   stat: 'ok';
 }
 
+export interface Photo {
+  farm: number;
+  id: string;
+  isfamily: number;
+  isfriend: number;
+  isprimary: string;
+  ispublic: number;
+  secret: string;
+  server: string;
+  title: string;
+}
+
+export interface Photoset {
+  id: string;
+  owner: string;
+  ownername: string;
+  page: number;
+  pages: number;
+  per_page: number;
+  perpage: number;
+  photo: Photo[];
+  primary: string;
+  title: string;
+  total: number;
+}
+
+export interface PhotosetResponse {
+  photoset: Photoset;
+  stat: 'ok';
+}
+
 export interface Photosets {
   page: number;
   pages: number;
   perpage: number;
-  photoset: Photoset[];
+  photoset: PhotosetAlbum[];
   total: number;
 }
 
-export interface Photoset {
+export interface PhotosetAlbum {
   id: string;
   title: {
     _content: string;
