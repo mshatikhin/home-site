@@ -53,8 +53,7 @@ var FlickrClient = /** @class */ (function () {
                     case 0:
                         _a.trys.push([0, 3, , 4]);
                         url = FlickrClient.flickrUrl({ method: 'flickr.photosets.getList', params: '&primary_photo_extras=url_z' });
-                        console.log("get albums", url);
-                        return [4 /*yield*/, cross_fetch_1["default"](decodeURI(url))];
+                        return [4 /*yield*/, cross_fetch_1["default"](url)];
                     case 1:
                         response = _a.sent();
                         return [4 /*yield*/, response.json()];

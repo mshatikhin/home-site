@@ -31,23 +31,21 @@ const Portfolio: React.FC = () => {
   });
 
   React.useEffect(() => {
-    if (state.requestStatusPhotoset === RequestStatus.Default) {
-      setState({
-        ...state,
-        photoset: undefined,
-        photosetId: undefined,
-        requestStatusPhotoset: RequestStatus.IsFetching
-      });
+    if (state.requestStatusPhotoset === RequestStatus.Default && state.photosetId) {
+      setState({ ...state, photoset: undefined, requestStatusPhotoset: RequestStatus.IsFetching });
 
       fetch(`/api/albums/${state.photosetId}`)
         .then(response => response.json())
         .then((response: PhotosetResponse) => {
-          if (response.stat === 'ok')
+          if (response.stat === 'ok') {
             setState({
               ...state,
               photoset: response.photoset,
               requestStatusPhotoset: RequestStatus.IsLoaded
             });
+          } else {
+            setState({ ...state, requestStatus: RequestStatus.IsFailed });
+          }
         })
         .catch(() => {
           setState({
@@ -63,12 +61,15 @@ const Portfolio: React.FC = () => {
       fetch('/api/albums')
         .then(response => response.json())
         .then((response: PhotosetsResponse) => {
-          if (response.stat === 'ok')
+          if (response.stat === 'ok') {
             setState({
               ...state,
               photosets: response.photosets.photoset,
               requestStatus: RequestStatus.IsLoaded
             });
+          } else {
+            setState({ ...state, requestStatus: RequestStatus.IsFailed });
+          }
         })
         .catch(() => {
           setState({
