@@ -18,6 +18,7 @@ interface State {
 }
 
 ReactModal!.defaultStyles.overlay!.backgroundColor = 'rgba(0,0,0,0.69)';
+ReactModal!.defaultStyles.overlay!.zIndex = 100;
 ReactModal!.defaultStyles.content!.backgroundColor = '#ddd';
 
 const Portfolio: React.FC = () => {
@@ -37,15 +38,11 @@ const Portfolio: React.FC = () => {
       fetch(`/api/albums/${state.photosetId}`)
         .then(response => response.json())
         .then((response: PhotosetResponse) => {
-          if (response.stat === 'ok') {
-            setState({
-              ...state,
-              photoset: response.photoset,
-              requestStatusPhotoset: RequestStatus.IsLoaded
-            });
-          } else {
-            setState({ ...state, requestStatus: RequestStatus.IsFailed });
-          }
+          setState({
+            ...state,
+            photoset: response.photoset,
+            requestStatusPhotoset: RequestStatus.IsLoaded
+          });
         })
         .catch(() => {
           setState({
@@ -61,15 +58,11 @@ const Portfolio: React.FC = () => {
       fetch('/api/albums')
         .then(response => response.json())
         .then((response: PhotosetsResponse) => {
-          if (response.stat === 'ok') {
-            setState({
-              ...state,
-              photosets: response.photosets.photoset,
-              requestStatus: RequestStatus.IsLoaded
-            });
-          } else {
-            setState({ ...state, requestStatus: RequestStatus.IsFailed });
-          }
+          setState({
+            ...state,
+            photosets: response.photosets.photoset,
+            requestStatus: RequestStatus.IsLoaded
+          });
         })
         .catch(() => {
           setState({

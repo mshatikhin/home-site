@@ -2,7 +2,7 @@ import fetch from 'cross-fetch';
 import { Request, Response } from 'express';
 
 const FLICKR_USER_ID = '124274905@N03';
-const FLICKR_API_KEY = '1173960c94df6700f0b57dccc50f0925@N03';
+const FLICKR_API_KEY = '205ce46245f3c208bb2faae036f8738b';
 
 export class FlickrClient {
   private static flickrUrl({ method, params }: { method: string; params: string }) {
@@ -14,6 +14,10 @@ export class FlickrClient {
       const url = FlickrClient.flickrUrl({ method: 'flickr.photosets.getList', params: '&primary_photo_extras=url_z' });
       const response = await fetch(url);
       const resp = await response.json();
+      if (resp.stat !== 'ok') {
+        throw Error('Ошибка при попытке загрузить альбомы');
+      }
+
       res.status(200).send(resp);
     } catch (e) {
       res.status(404).json({ error: e });
@@ -28,6 +32,10 @@ export class FlickrClient {
       });
       const response = await fetch(url);
       const resp = await response.json();
+      if (resp.stat !== 'ok') {
+        throw Error('Ошибка при попытке загрузить фотосет');
+      }
+
       res.status(200).send(resp);
     } catch (e) {
       res.status(404).json({ error: e });
