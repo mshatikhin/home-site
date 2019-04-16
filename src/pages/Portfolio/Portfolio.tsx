@@ -5,7 +5,7 @@ import fetch from 'cross-fetch';
 import { Photoset, PhotosetAlbum, PhotosetResponse, PhotosetsResponse } from './types';
 import { RequestStatus } from '../../util.types';
 import { PhotosetAlbumItem } from './PhotosetAlbumItem';
-import { PhotosetItem } from './PhotosetItem';
+import { PhotosetItems } from './PhotosetItems';
 import ReactModal from 'react-modal';
 
 interface State {
@@ -17,11 +17,23 @@ interface State {
   showModal: boolean;
 }
 
-ReactModal!.defaultStyles.overlay!.backgroundColor = 'rgba(0,0,0,0.69)';
-ReactModal!.defaultStyles.overlay!.zIndex = 100;
-ReactModal!.defaultStyles.content!.backgroundColor = '#ddd';
+ReactModal!.defaultStyles.overlay = {
+  ...ReactModal!.defaultStyles.overlay,
+  backgroundColor: 'rgba(0,0,0,0.69)',
+  zIndex: 100
+};
+ReactModal!.defaultStyles.content = {
+  ...ReactModal!.defaultStyles.content,
+  top: 0,
+  left: '10%',
+  right: '10%',
+  bottom: 0,
+  paddingBottom: 40,
+  backgroundColor: '#ddd',
+  borderRadius: 0
+};
 
-const Portfolio: React.FC = () => {
+export const Portfolio: React.FC = () => {
   const [state, setState] = React.useState<State>({
     photosets: [],
     requestStatus: RequestStatus.Default,
@@ -94,35 +106,36 @@ const Portfolio: React.FC = () => {
   };
 
   return (
-    <div className={styles.main}>
-      {state.requestStatus === RequestStatus.IsFetching ? (
-        <Loader />
-      ) : (
-        state.photosets.map(photoset => (
-          <PhotosetAlbumItem key={photoset.id} photoset={photoset} onLoadPhotoset={loadPhotoset} />
-        ))
-      )}
-      <ReactModal
-        isOpen={state.showModal!}
-        shouldFocusAfterRender={true}
-        bodyOpenClassName="ReactModal__Body--open"
-        onRequestClose={handleCloseModal}
-      >
-        {state.photoset == null ? (
+    <>
+      <div className={styles.portfolioHeader}>Моё портфолио</div>
+      <div className={styles.main}>
+        {state.requestStatus === RequestStatus.IsFetching ? (
           <Loader />
         ) : (
-          <>
-            <PhotosetItem photos={state.photoset.photo} />
-            <div style={{ textAlign: 'center' }}>
-              <button className={styles.btnRequest} onClick={handleCloseModal}>
-                Закрыть
-              </button>
-            </div>
-          </>
+          state.photosets.map(photoset => (
+            <PhotosetAlbumItem key={photoset.id} photoset={photoset} onLoadPhotoset={loadPhotoset} />
+          ))
         )}
-      </ReactModal>
-    </div>
+        <ReactModal
+          isOpen={state.showModal!}
+          shouldFocusAfterRender={true}
+          htmlOpenClassName="ReactModal__Html--open"
+          onRequestClose={handleCloseModal}
+        >
+          {state.photoset == null ? (
+            <Loader />
+          ) : (
+            <>
+              <PhotosetItems photos={state.photoset.photo} />
+              <div style={{ textAlign: 'center' }}>
+                <button className={styles.btnRequest} onClick={handleCloseModal}>
+                  Закрыть
+                </button>
+              </div>
+            </>
+          )}
+        </ReactModal>
+      </div>
+    </>
   );
 };
-
-export default Portfolio;

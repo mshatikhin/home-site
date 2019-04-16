@@ -1,7 +1,7 @@
 import styles from './Header.module.css';
 import React from 'react';
 
-const Header: React.FC = () => (
+export const Header: React.FC = () => (
   <div className={styles.header}>
     <div className={styles.headerWrapper}>
       <a href="/" className={styles.logoLink}>
@@ -13,5 +13,3 @@ const Header: React.FC = () => (
     </div>
   </div>
 );
-
-export default Header;

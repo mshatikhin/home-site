@@ -66,6 +66,15 @@
   height: 30px;
 }
 
+.portfolioHeader {
+  box-sizing: border-box;
+  font-size: 16px;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: 600;
+}
+
 .countPhotos {
   font-size: 11px;
   text-transform: uppercase;

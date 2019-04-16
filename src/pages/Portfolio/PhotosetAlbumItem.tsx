@@ -14,7 +14,7 @@ export const PhotosetAlbumItem: React.FC<Props> = ({ photoset, onLoadPhotoset })
       : styles.verticalImage;
 
   return (
-    <div key={photoset.id} className={styles.card} onClick={onLoadPhotoset(photoset.id)}>
+    <div key={photoset.id} className={styles.card} onClick={onLoadPhotoset(photoset.id)} title="Смотреть серию">
       <div className={styles.meta}>
         <header className={styles.header}>{photoset.title._content}</header>
         <span className={styles.countPhotos}>{photoset.photos} photos</span>

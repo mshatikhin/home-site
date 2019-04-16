@@ -12,7 +12,7 @@ interface State {
   autoplay: boolean;
 }
 
-class Slider extends Component<Props, State> {
+export class Slider extends Component<Props, State> {
   sliderElement = React.createRef<HTMLDivElement>();
   autoplayInterval: any;
 
@@ -34,8 +34,7 @@ class Slider extends Component<Props, State> {
 
   prev = () => {
     let selectedSlide = this.state.selectedSlide;
-    const prevSlide =
-      selectedSlide === 0 ? this.props.children.length - 1 : --selectedSlide;
+    const prevSlide = selectedSlide === 0 ? this.props.children.length - 1 : --selectedSlide;
     this.setState({
       selectedSlide: prevSlide
     });
@@ -43,8 +42,7 @@ class Slider extends Component<Props, State> {
 
   next = () => {
     let selectedSlide = this.state.selectedSlide;
-    const nextSlide =
-      selectedSlide === this.props.children.length - 1 ? 0 : ++selectedSlide;
+    const nextSlide = selectedSlide === this.props.children.length - 1 ? 0 : ++selectedSlide;
     this.setState({
       selectedSlide: nextSlide
     });
@@ -90,21 +88,13 @@ class Slider extends Component<Props, State> {
             <div className={styles.imageWrap}>{child}</div>
           ))}
         </div>
-        <div
-          className={`${styles.controlWrapper} ${styles.controlWrapperLeft}`}
-          onClick={this.prev}
-        >
+        <div className={`${styles.controlWrapper} ${styles.controlWrapperLeft}`} onClick={this.prev}>
           <div className={`${styles.control} ${styles.leftControl}`} />
         </div>
-        <div
-          className={`${styles.controlWrapper} ${styles.controlWrapperRight}`}
-          onClick={this.next}
-        >
+        <div className={`${styles.controlWrapper} ${styles.controlWrapperRight}`} onClick={this.next}>
           <div className={`${styles.control} ${styles.rightControl}`} />
         </div>
       </div>
     );
   }
 }
-
-export default Slider;

@@ -1,16 +1,16 @@
 import React from 'react';
-import Home from './pages/Home';
-import Header from './components/Header';
-import Portfolio from './pages/Portfolio';
-import About from './pages/About';
+import { Landing } from './pages/Landing';
+import { Header } from './components/Header';
+import { Home } from './pages/Home';
+import { About } from './pages/About';
+import { Portfolio } from './pages/Portfolio';
 
-const App: React.FC = () => (
+export const App: React.FC = () => (
   <div>
     <Header />
     <Home />
+    <Landing />
     <About />
-    {/*<Portfolio />*/}
+    <Portfolio />
   </div>
 );
-
-export default App;

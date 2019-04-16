@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styles from './Home.module.css';
-import Landing from './Landing';
-import Slider from '../../components/Slider';
+import { Slider } from '../../components/Slider';
 
 const images = [
   require('./images/1.jpg'),
@@ -33,32 +32,19 @@ function getRandomArbitary(min: number, max: number) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-interface State {
-  showLanding?: boolean;
-}
-
-const Home: React.FC = () => {
+export const Home: React.FC = () => {
   const initSlide = bestImages[getRandomArbitary(1, bestImages.length)];
-  const [showLanding, setShowLanding] = useState<State>({ showLanding: false });
-
-  const onLoad = () => {
-    !showLanding && setShowLanding({ showLanding: true });
-  };
-
   return (
     <div className={styles.root}>
       <div className={styles.wrapper}>
         <Slider initialSlide={initSlide}>
           {images.map((img, index) => (
             <div key={index} className={styles.imgWrap}>
-              <img src={img} className={styles.img} onLoad={onLoad} />
+              <img src={img} className={styles.img} alt="Изображение" />
             </div>
           ))}
         </Slider>
       </div>
-      {showLanding && <Landing />}
     </div>
   );
 };
-
-export default Home;
