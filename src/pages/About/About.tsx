@@ -5,7 +5,13 @@ export const About: React.FC = () => (
   <div className={styles.about}>
     <div className={styles.card}>
       <div className={styles.avatarWrapper}>
-        <img className={styles.avatar} src={require('./images/1.jpg')} width="300" height="300" />
+        <img
+          className={styles.avatar}
+          src={require('./images/1.jpg')}
+          width="300"
+          height="300"
+          alt="Mikhail Shatikhin"
+        />
       </div>
       <article>
         <p>
@@ -31,20 +37,10 @@ export const About: React.FC = () => (
       </article>
       <div className={styles.contacts}>
         Если желаете со мной поработать (как модель/визажист/дизайнер), сообщите мне:
-        <ul className={styles.contactList}>
-          <li>
-            <a href="//vk.me/id2069565">
-              <img src={require('./images/vk.png')} />
-              <span className={styles.contactListText}>Mikhail Shatikhin</span>
-            </a>
-          </li>
-          <li>
-            <a href="tel:+7(912)043-98-27">
-              <img src={require('./images/phone.png')} />
-              <span className={styles.contactListText}>+7 (912) 043-98-27</span>
-            </a>
-          </li>
-        </ul>
+        <a className={styles.contactListLink} href="//vk.me/id2069565">
+          <img src={require('./images/vk.png')} alt="Vk Mikhail Shatikhin" />
+          <span className={styles.contactListText}>MIKHAIL SHATIKHIN</span>
+        </a>
       </div>
     </div>
   </div>

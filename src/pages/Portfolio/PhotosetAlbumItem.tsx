@@ -24,6 +24,7 @@ export const PhotosetAlbumItem: React.FC<Props> = ({ photoset, onLoadPhotoset })
         src={photoset.primary_photo_extras.url_z}
         width={photoset.primary_photo_extras.width_z}
         height={photoset.primary_photo_extras.height_z}
+        alt={photoset.title._content}
       />
     </div>
   );

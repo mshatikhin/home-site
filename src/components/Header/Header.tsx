@@ -2,7 +2,7 @@ import styles from './Header.module.css';
 import React from 'react';
 
 export const Header: React.FC = () => (
-  <div className={styles.header}>
+  <header className={styles.header}>
     <div className={styles.headerWrapper}>
       <a href="/" className={styles.logoLink}>
         <span className={styles.logoText}>
@@ -11,5 +11,5 @@ export const Header: React.FC = () => (
         <span className={styles.logoMainText}>MIKHAIL SHATIKHIN</span>
       </a>
     </div>
-  </div>
+  </header>
 );

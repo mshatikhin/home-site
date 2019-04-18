@@ -3,7 +3,7 @@ import styles from './Portfolio.module.css';
 import { Loader } from '../../components/Loader';
 import fetch from 'cross-fetch';
 import { Photoset, PhotosetAlbum, PhotosetResponse, PhotosetsResponse } from './types';
-import { RequestStatus } from '../../util.types';
+import { RequestStatus } from '../../util';
 import { PhotosetAlbumItem } from './PhotosetAlbumItem';
 import { PhotosetItems } from './PhotosetItems';
 import ReactModal from 'react-modal';
@@ -107,7 +107,7 @@ export const Portfolio: React.FC = () => {
 
   return (
     <>
-      <div className={styles.portfolioHeader}>Моё портфолио</div>
+      <div className={styles.portfolioHeader}>МОИ РАБОТЫ</div>
       <div className={styles.main}>
         {state.requestStatus === RequestStatus.IsFetching ? (
           <Loader />
@@ -121,6 +121,7 @@ export const Portfolio: React.FC = () => {
           shouldFocusAfterRender={true}
           htmlOpenClassName="ReactModal__Html--open"
           onRequestClose={handleCloseModal}
+          ariaHideApp={false}
         >
           {state.photoset == null ? (
             <Loader />

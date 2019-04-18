@@ -1,71 +1,71 @@
 .root {
-    margin: auto;
-    max-width: 100%;
+  margin: auto;
+  max-width: 100%;
 }
 
 .wrapper {
-    margin: 0 auto 50px auto;
-    max-width: 1080px;
+  margin: 0 auto 50px auto;
+  max-width: 1080px;
 }
 
 .imgWrap {
-    max-height: 666px;
-    max-width: 100%;
-    overflow: hidden;
-    text-align: center;
+  max-height: 666px;
+  max-width: 100%;
+  overflow: hidden;
+  text-align: center;
 }
 
 .img {
-    border: none;
-    max-width: 100%;
+  border: none;
+  max-width: 100%;
 }
 
 .landing {
-    background: #fff;
-    padding: 50px 0 50px 0;
-    letter-spacing: 1.2px;
+  background: #fff;
+  padding: 50px 0 50px 0;
+  letter-spacing: 1.2px;
 }
 
 .btnRequest {
-    background: #56b354 none;
-    border: none;
-    border-radius: 2px;
-    color: #fff;
-    cursor: pointer;
-    display: inline-block;
-    font-size: 18px;
-    font-weight: normal;
-    line-height: 1.42857143;
-    margin-bottom: 0;
-    padding: 10px 22px;
-    text-align: center;
-    text-shadow: 0 1px 0 rgba(0, 0, 0, .25);
-    vertical-align: middle;
-    white-space: nowrap;
+  background: #0f78b9 none;
+  border: none;
+  border-radius: 2px;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 18px;
+  font-weight: normal;
+  line-height: 1.42857143;
+  margin-bottom: 0;
+  padding: 10px 22px;
+  text-align: center;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
+  vertical-align: middle;
+  white-space: nowrap;
 }
 
 .btnRequest:hover {
-    background: #56b354 linear-gradient(to bottom, #45a743 5%, #56b354 100%);
+  background: #0f78b9 linear-gradient(to bottom, #0f78b9 5%, #0f78b9 100%);
 }
 
 .center {
-    text-align: center;
+  text-align: center;
 }
 
 .header {
-    font-weight: 100;
-    font-size: 26px;
-    margin-bottom: 20px;
+  font-weight: 100;
+  font-size: 26px;
+  margin-bottom: 20px;
 }
 
 @media screen and (max-width: 1200px) {
-    .landing {
-        padding: 20px;
-    }
+  .landing {
+    padding: 20px;
+  }
 }
 
 @media screen and (max-width: 800px) {
-    .header {
-        font-size: 1em;
-    }
+  .header {
+    font-size: 1em;
+  }
 }

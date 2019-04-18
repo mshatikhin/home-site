@@ -6,11 +6,11 @@ import { About } from './pages/About';
 import { Portfolio } from './pages/Portfolio';
 
 export const App: React.FC = () => (
-  <div>
+  <>
     <Header />
     <Home />
     <Landing />
     <About />
     <Portfolio />
-  </div>
+  </>
 );

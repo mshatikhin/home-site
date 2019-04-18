@@ -16,7 +16,7 @@ export const PhotosetItems: React.FC<Props> = ({ photos }) => {
   ) : (
     <div className={styles.wrapper}>
       {urls.map((photoUrl, index) => (
-        <img key={index} className={styles.mainImage} src={photoUrl} alt="Изображение" />
+        <img key={index} className={styles.image} src={photoUrl} alt={'Изображение ' + index} />
       ))}
     </div>
   );

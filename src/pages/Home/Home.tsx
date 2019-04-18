@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './Home.module.css';
 import { Slider } from '../../components/Slider';
+import { getRandomArbitary } from '../../util';
 
 const images = [
   require('./images/1.jpg'),
@@ -28,23 +29,19 @@ const images = [
 
 const bestImages = [0, 1, 7, 9, 14, 15, 16, 18];
 
-function getRandomArbitary(min: number, max: number) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
 export const Home: React.FC = () => {
   const initSlide = bestImages[getRandomArbitary(1, bestImages.length)];
   return (
-    <div className={styles.root}>
+    <section className={styles.root}>
       <div className={styles.wrapper}>
         <Slider initialSlide={initSlide}>
           {images.map((img, index) => (
             <div key={index} className={styles.imgWrap}>
-              <img src={img} className={styles.img} alt="Изображение" />
+              <img src={img} className={styles.img} alt={'Изображение ' + index} />
             </div>
           ))}
         </Slider>
       </div>
-    </div>
+    </section>
   );
 };

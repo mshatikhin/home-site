@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styles from './Slider.module.css';
 
 interface Props {
-  initialSlide: number;
+  initialSlide?: number;
   children: any[];
 }
 
@@ -11,7 +11,6 @@ interface State {
   slideWidth: number;
   autoplay: boolean;
 }
-
 export class Slider extends Component<Props, State> {
   sliderElement = React.createRef<HTMLDivElement>();
   autoplayInterval: any;
@@ -20,6 +19,10 @@ export class Slider extends Component<Props, State> {
     selectedSlide: 0,
     slideWidth: 0,
     autoplay: true
+  };
+
+  static defaultProps = {
+    initialSlide: 0
   };
 
   componentDidMount() {
