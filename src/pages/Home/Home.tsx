@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './Home.module.css';
 import { Slider } from '../../components/Slider';
 import { getRandomArbitary } from '../../util';
+import { Header } from '../../components/Header';
 
 const images = [
   require('./images/1.jpg'),
@@ -33,6 +34,7 @@ export const Home: React.FC = () => {
   const initSlide = bestImages[getRandomArbitary(1, bestImages.length)];
   return (
     <section className={styles.root}>
+      <Header />
       <div className={styles.wrapper}>
         <Slider initialSlide={initSlide}>
           {images.map((img, index) => (

@@ -2,16 +2,10 @@ import React from 'react';
 import styles from './About.module.css';
 
 export const About: React.FC = () => (
-  <div className={styles.about}>
+  <section className={styles.about}>
     <div className={styles.card}>
       <div className={styles.avatarWrapper}>
-        <img
-          className={styles.avatar}
-          src={require('./images/1.jpg')}
-          width="300"
-          height="300"
-          alt="Mikhail Shatikhin"
-        />
+        <img src={require('./images/1.jpg')} width="300" height="300" alt="Mikhail Shatikhin" />
       </div>
       <article>
         <p>
@@ -26,8 +20,8 @@ export const About: React.FC = () => (
         <p>
           Меня очень вдохновляет создание портретов, воплощение художественных/творческих образов и различных фантазий в
           фотографиях. Особенно мне нравятся пленэрные съёмки: скалы, реки и леса, а также мистическое и интригующее.
-          Буду рад увидеть вас через объектив моей фотокамеры!
         </p>
+        <p>Буду рад увидеть вас через объектив моей фотокамеры!</p>
         <p>
           Также я люблю путешествовать, живу я на Урале, в Екатеринбурге. Поэтому львиная доля путешествий приходится на
           ближайшие достопримечательности: Свердловская область, Челябинская область, Башкирия, Пермский край. Я обожаю
@@ -36,12 +30,12 @@ export const About: React.FC = () => (
         </p>
       </article>
       <div className={styles.contacts}>
-        Если желаете со мной поработать (как модель/визажист/дизайнер), сообщите мне:
+        Если желаете со мной поработать (как модель/визажист/дизайнер), пишите мне:
         <a className={styles.contactListLink} href="//vk.me/id2069565">
           <img src={require('./images/vk.png')} alt="Vk Mikhail Shatikhin" />
           <span className={styles.contactListText}>MIKHAIL SHATIKHIN</span>
         </a>
       </div>
     </div>
-  </div>
+  </section>
 );

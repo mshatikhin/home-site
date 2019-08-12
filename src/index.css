@@ -33,6 +33,10 @@ img {
   max-width: 100%;
 }
 
+p {
+  margin-block-start: 0;
+}
+
 a[href] {
   text-decoration: none;
 }

@@ -9,7 +9,7 @@ export const Landing: React.FC = () => (
       </section>
       <div className={styles.center}>
         <a target="blank" className={styles.btnRequest} href="//vk.me/id2069565">
-          Записаться!
+          Хочу фотосессию
         </a>
       </div>
     </section>
