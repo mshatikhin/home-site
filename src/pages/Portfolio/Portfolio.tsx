@@ -6,7 +6,6 @@ import { Photoset, PhotosetAlbum, PhotosetResponse, PhotosetsResponse } from './
 import { RequestStatus } from '../../util';
 import { PhotosetAlbumItem } from './PhotosetAlbumItem';
 import { PhotosetItems } from './PhotosetItems';
-import ReactModal from 'react-modal';
 
 interface State {
   photosets: PhotosetAlbum[];
@@ -16,22 +15,6 @@ interface State {
   photosetId: string | undefined;
   showModal: boolean;
 }
-
-ReactModal!.defaultStyles.overlay = {
-  ...ReactModal!.defaultStyles.overlay,
-  backgroundColor: 'rgba(0,0,0,0.69)',
-  zIndex: 100
-};
-ReactModal!.defaultStyles.content = {
-  ...ReactModal!.defaultStyles.content,
-  top: 0,
-  left: '10%',
-  right: '10%',
-  bottom: 0,
-  paddingBottom: 40,
-  backgroundColor: '#ddd',
-  borderRadius: 0
-};
 
 export const Portfolio: React.FC = () => {
   const [state, setState] = React.useState<State>({
@@ -116,26 +99,26 @@ export const Portfolio: React.FC = () => {
             <PhotosetAlbumItem key={photoset.id} photoset={photoset} onLoadPhotoset={loadPhotoset} />
           ))
         )}
-        <ReactModal
-          isOpen={state.showModal!}
-          shouldFocusAfterRender={true}
-          htmlOpenClassName="ReactModal__Html--open"
-          onRequestClose={handleCloseModal}
-          ariaHideApp={false}
-        >
-          {state.photoset == null ? (
-            <Loader />
-          ) : (
-            <>
-              <PhotosetItems photos={state.photoset.photo} />
-              <div style={{ textAlign: 'center' }}>
-                <button className={styles.btnRequest} onClick={handleCloseModal}>
-                  Закрыть
-                </button>
-              </div>
-            </>
-          )}
-        </ReactModal>
+        {/*<ReactModal*/}
+        {/*  isOpen={state.showModal!}*/}
+        {/*  shouldFocusAfterRender={true}*/}
+        {/*  htmlOpenClassName="ReactModal__Html--open"*/}
+        {/*  onRequestClose={handleCloseModal}*/}
+        {/*  ariaHideApp={false}*/}
+        {/*>*/}
+        {/*  {state.photoset == null ? (*/}
+        {/*    <Loader />*/}
+        {/*  ) : (*/}
+        {/*    <>*/}
+        {/*      <PhotosetItems photos={state.photoset.photo} />*/}
+        {/*      <div style={{ textAlign: 'center' }}>*/}
+        {/*        <button className={styles.btnRequest} onClick={handleCloseModal}>*/}
+        {/*          Закрыть*/}
+        {/*        </button>*/}
+        {/*      </div>*/}
+        {/*    </>*/}
+        {/*  )}*/}
+        {/*</ReactModal>*/}
       </div>
     </>
   );

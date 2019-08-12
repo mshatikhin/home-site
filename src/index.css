@@ -60,7 +60,3 @@ input[disabled] {
   background-color: rgb(235, 235, 228);
   border-color: rgb(235, 235, 228);
 }
-
-.ReactModal__Html--open {
-  overflow-y: hidden;
-}
