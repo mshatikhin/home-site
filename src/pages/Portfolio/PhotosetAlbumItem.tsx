@@ -1,31 +1,80 @@
 import * as React from 'react';
-import { PhotosetAlbum } from './types';
+import { Photoset, PhotosetAlbum, PhotosetResponse } from './types';
 import styles from './Portfolio.module.css';
+import { RequestStatus } from '../../util';
+import { PhotosetItems } from './PhotosetItems';
 
-interface Props {
-  photoset: PhotosetAlbum;
-  onLoadPhotoset: (id: string) => () => void;
+interface State {
+  photoset: Photoset | null;
+  requestStatus: RequestStatus;
 }
 
-export const PhotosetAlbumItem: React.FC<Props> = ({ photoset, onLoadPhotoset }) => {
+interface Props {
+  album: PhotosetAlbum;
+}
+
+export const PhotosetAlbumItem: React.FC<Props> = ({ album }) => {
+  const [state, setState] = React.useState<State>({
+    photoset: null,
+    requestStatus: RequestStatus.Default
+  });
+
+  const [photosetId, setPhotosetId] = React.useState<string>();
+
+  React.useEffect(() => {
+    if (!photosetId) {
+      return;
+    }
+
+    setState({ photoset: null, requestStatus: RequestStatus.IsFetching });
+
+    fetch(`/api/albums/${photosetId}`)
+      .then(response => response.json())
+      .then((response: PhotosetResponse) => {
+        setState({
+          photoset: response.photoset,
+          requestStatus: RequestStatus.IsLoaded
+        });
+      })
+      .catch(() => {
+        setState({
+          photoset: null,
+          requestStatus: RequestStatus.IsFailed
+        });
+      });
+  }, [photosetId]);
+
+  const onLoadPhotoset = (id: string) => () => {
+    debugger;
+    setPhotosetId(id);
+  };
+
   const additionalClass =
-    photoset.primary_photo_extras.width_z - photoset.primary_photo_extras.height_z > 0
+    album.primary_photo_extras.width_z - album.primary_photo_extras.height_z > 0
       ? styles.horizontalImage
       : styles.verticalImage;
 
   return (
-    <div key={photoset.id} className={styles.card} onClick={onLoadPhotoset(photoset.id)} title="Смотреть серию">
+    <div key={album.id} className={styles.card} onClick={onLoadPhotoset(album.id)} title="Смотреть серию">
       <div className={styles.meta}>
-        <header className={styles.header}>{photoset.title._content}</header>
-        <span className={styles.countPhotos}>{photoset.photos} photos</span>
+        <header className={styles.header}>{album.title._content}</header>
+        <span className={styles.countPhotos}>{album.photos} photos</span>
       </div>
       <img
         className={`${styles.mainImage} ${additionalClass}`}
-        src={photoset.primary_photo_extras.url_z}
-        width={photoset.primary_photo_extras.width_z}
-        height={photoset.primary_photo_extras.height_z}
-        alt={photoset.title._content}
+        src={album.primary_photo_extras.url_z}
+        width={album.primary_photo_extras.width_z}
+        height={album.primary_photo_extras.height_z}
+        alt={album.title._content}
       />
+      {state.photoset && (
+        <>
+          <PhotosetItems photos={state.photoset.photo} />
+          <div style={{ textAlign: 'center' }}>
+            <button className={styles.btnRequest}>Назад</button>
+          </div>
+        </>
+      )}
     </div>
   );
 };

@@ -2,91 +2,39 @@
 import styles from './Portfolio.module.css';
 import { Loader } from '../../components/Loader';
 import fetch from 'cross-fetch';
-import { Photoset, PhotosetAlbum, PhotosetResponse, PhotosetsResponse } from './types';
+import { PhotosetAlbum, PhotosetsResponse } from './types';
 import { RequestStatus } from '../../util';
 import { PhotosetAlbumItem } from './PhotosetAlbumItem';
-import { PhotosetItems } from './PhotosetItems';
 
 interface State {
   photosets: PhotosetAlbum[];
   requestStatus: RequestStatus;
-  requestStatusPhotoset: RequestStatus;
-  photoset: Photoset | undefined;
-  photosetId: string | undefined;
-  showModal: boolean;
 }
 
 export const Portfolio: React.FC = () => {
   const [state, setState] = React.useState<State>({
     photosets: [],
-    requestStatus: RequestStatus.Default,
-    requestStatusPhotoset: RequestStatus.Default,
-    showModal: false,
-    photosetId: undefined,
-    photoset: undefined
+    requestStatus: RequestStatus.Default
   });
 
   React.useEffect(() => {
-    if (state.requestStatusPhotoset === RequestStatus.Default && state.photosetId) {
-      setState({ ...state, photoset: undefined, requestStatusPhotoset: RequestStatus.IsFetching });
+    setState({ photosets: [], requestStatus: RequestStatus.IsFetching });
 
-      fetch(`/api/albums/${state.photosetId}`)
-        .then(response => response.json())
-        .then((response: PhotosetResponse) => {
-          setState({
-            ...state,
-            photoset: response.photoset,
-            requestStatusPhotoset: RequestStatus.IsLoaded
-          });
-        })
-        .catch(() => {
-          setState({
-            ...state,
-            requestStatusPhotoset: RequestStatus.IsFailed
-          });
+    fetch('/api/albums')
+      .then(response => response.json())
+      .then((response: PhotosetsResponse) => {
+        setState({
+          photosets: response.photosets.photoset,
+          requestStatus: RequestStatus.IsLoaded
         });
-    }
-
-    if (state.requestStatus === RequestStatus.Default) {
-      setState({ ...state, photosets: [], requestStatus: RequestStatus.IsFetching });
-
-      fetch('/api/albums')
-        .then(response => response.json())
-        .then((response: PhotosetsResponse) => {
-          setState({
-            ...state,
-            photosets: response.photosets.photoset,
-            requestStatus: RequestStatus.IsLoaded
-          });
-        })
-        .catch(() => {
-          setState({
-            ...state,
-            photosets: [],
-            requestStatus: RequestStatus.IsFailed
-          });
+      })
+      .catch(() => {
+        setState({
+          photosets: [],
+          requestStatus: RequestStatus.IsFailed
         });
-    }
-  });
-
-  const loadPhotoset = (photosetId: string) => () => {
-    setState({
-      ...state,
-      requestStatusPhotoset: RequestStatus.Default,
-      photosetId,
-      showModal: true,
-      photoset: undefined
-    });
-  };
-
-  const handleCloseModal = () => {
-    setState({
-      ...state,
-      photosetId: undefined,
-      photoset: undefined,
-      showModal: false
-    });
-  };
+      });
+  }, []);
 
   return (
     <>
@@ -95,30 +43,8 @@ export const Portfolio: React.FC = () => {
         {state.requestStatus === RequestStatus.IsFetching ? (
           <Loader />
         ) : (
-          state.photosets.map(photoset => (
-            <PhotosetAlbumItem key={photoset.id} photoset={photoset} onLoadPhotoset={loadPhotoset} />
-          ))
+          state.photosets.map(album => <PhotosetAlbumItem key={album.id} album={album} />)
         )}
-        {/*<ReactModal*/}
-        {/*  isOpen={state.showModal!}*/}
-        {/*  shouldFocusAfterRender={true}*/}
-        {/*  htmlOpenClassName="ReactModal__Html--open"*/}
-        {/*  onRequestClose={handleCloseModal}*/}
-        {/*  ariaHideApp={false}*/}
-        {/*>*/}
-        {/*  {state.photoset == null ? (*/}
-        {/*    <Loader />*/}
-        {/*  ) : (*/}
-        {/*    <>*/}
-        {/*      <PhotosetItems photos={state.photoset.photo} />*/}
-        {/*      <div style={{ textAlign: 'center' }}>*/}
-        {/*        <button className={styles.btnRequest} onClick={handleCloseModal}>*/}
-        {/*          Закрыть*/}
-        {/*        </button>*/}
-        {/*      </div>*/}
-        {/*    </>*/}
-        {/*  )}*/}
-        {/*</ReactModal>*/}
       </div>
     </>
   );
