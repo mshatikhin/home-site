@@ -1,31 +1,32 @@
 import * as React from 'react';
 import { PhotosetAlbum } from './types';
 import styles from './Portfolio.module.css';
+import { Link } from 'react-router-dom';
+import { routes } from '../../routes';
 
 interface Props {
-  photoset: PhotosetAlbum;
-  onLoadPhotoset: (id: string) => () => void;
+  album: PhotosetAlbum;
 }
 
-export const PhotosetAlbumItem: React.FC<Props> = ({ photoset, onLoadPhotoset }) => {
+export const PhotosetAlbumItem: React.FC<Props> = ({ album }) => {
   const additionalClass =
-    photoset.primary_photo_extras.width_z - photoset.primary_photo_extras.height_z > 0
+    album.primary_photo_extras.width_z - album.primary_photo_extras.height_z > 0
       ? styles.horizontalImage
       : styles.verticalImage;
 
   return (
-    <div key={photoset.id} className={styles.card} onClick={onLoadPhotoset(photoset.id)} title="Смотреть серию">
+    <Link className={styles.card} to={`${routes.portfolio}/${album.id}`} title="Смотреть серию">
       <div className={styles.meta}>
-        <header className={styles.header}>{photoset.title._content}</header>
-        <span className={styles.countPhotos}>{photoset.photos} photos</span>
+        <header className={styles.header}>{album.title._content}</header>
+        <span className={styles.countPhotos}>{album.photos} photos</span>
       </div>
       <img
         className={`${styles.mainImage} ${additionalClass}`}
-        src={photoset.primary_photo_extras.url_z}
-        width={photoset.primary_photo_extras.width_z}
-        height={photoset.primary_photo_extras.height_z}
-        alt={photoset.title._content}
+        src={album.primary_photo_extras.url_z}
+        width={album.primary_photo_extras.width_z}
+        height={album.primary_photo_extras.height_z}
+        alt={album.title._content}
       />
-    </div>
+    </Link>
   );
 };

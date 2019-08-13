@@ -15,6 +15,7 @@ body {
   color: #333;
   font-size: 16px;
   background: #eee;
+  overflow-y: scroll;
 }
 
 h1,
@@ -59,8 +60,4 @@ input[disabled] {
   color: #666;
   background-color: rgb(235, 235, 228);
   border-color: rgb(235, 235, 228);
-}
-
-.ReactModal__Html--open {
-  overflow-y: hidden;
 }
