@@ -1,1 +1,1 @@
-export { Portfolio } from './Portfolio';
+export { PortfolioPage } from './PortfolioPage';

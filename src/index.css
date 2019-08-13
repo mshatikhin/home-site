@@ -15,6 +15,7 @@ body {
   color: #333;
   font-size: 16px;
   background: #eee;
+  overflow-y: scroll;
 }
 
 h1,

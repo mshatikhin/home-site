@@ -1,14 +1,16 @@
 import React from 'react';
-import { Landing } from './pages/Landing';
-import { Home } from './pages/Home';
-import { About } from './pages/About';
-import { Portfolio } from './pages/Portfolio';
+import { PortfolioPage } from './pages/Portfolio';
+import { BrowserRouter, Route } from 'react-router-dom';
+import { PhotoAlbumPage } from './pages/Portfolio/PhotoAlbumPage';
+import { IndexPage } from './pages/IndexPage';
+import { Layout } from './pages/Layout';
 
 export const App: React.FC = () => (
-  <>
-    <Home />
-    <Landing />
-    <About />
-    <Portfolio />
-  </>
+  <BrowserRouter>
+    <Layout>
+      <Route path="/" exact component={IndexPage} />
+      <Route path="/portfolio" exact component={PortfolioPage} />
+      <Route path="/portfolio/:id" exact component={PhotoAlbumPage} />
+    </Layout>
+  </BrowserRouter>
 );

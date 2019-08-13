@@ -9,7 +9,9 @@
 .image {
   display: block;
   max-width: 100%;
-  margin: 40px auto;
+  margin: 64px auto 128px auto;
+  border-radius: 2px;
+  box-shadow: 0 28px 16px -26px rgba(0, 0, 0);
 }
 
 .album {

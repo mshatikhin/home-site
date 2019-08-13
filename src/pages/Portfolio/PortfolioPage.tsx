@@ -11,7 +11,7 @@ interface State {
   requestStatus: RequestStatus;
 }
 
-export const Portfolio: React.FC = () => {
+export const PortfolioPage: React.FC = () => {
   const [state, setState] = React.useState<State>({
     photosets: [],
     requestStatus: RequestStatus.Default
@@ -37,15 +37,12 @@ export const Portfolio: React.FC = () => {
   }, []);
 
   return (
-    <>
-      <div className={styles.portfolioHeader}>МОИ РАБОТЫ</div>
-      <div className={styles.main}>
-        {state.requestStatus === RequestStatus.IsFetching ? (
-          <Loader />
-        ) : (
-          state.photosets.map(album => <PhotosetAlbumItem key={album.id} album={album} />)
-        )}
-      </div>
-    </>
+    <div className={styles.main}>
+      {state.requestStatus === RequestStatus.IsFetching ? (
+        <Loader />
+      ) : (
+        state.photosets.map(album => <PhotosetAlbumItem key={album.id} album={album} />)
+      )}
+    </div>
   );
 };

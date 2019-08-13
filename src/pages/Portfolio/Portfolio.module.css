@@ -27,7 +27,7 @@
   width: 455px;
   height: 398px;
   margin-right: 50px;
-  margin-bottom: 50px;
+  margin-bottom: 64px;
   color: rgba(0, 0, 0, 0.870588);
   background-color: rgb(255, 255, 255);
   transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
@@ -87,28 +87,6 @@
 
 .verticalImage {
   margin: -15% 0 0 0;
-}
-
-.btnRequest {
-  background: #56b354 none;
-  border: none;
-  border-radius: 2px;
-  color: #fff;
-  cursor: pointer;
-  display: inline-block;
-  font-size: 18px;
-  font-weight: normal;
-  line-height: 1.42857143;
-  margin-bottom: 0;
-  padding: 10px 22px;
-  text-align: center;
-  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
-  vertical-align: middle;
-  white-space: nowrap;
-}
-
-.btnRequest:hover {
-  background: #56b354 linear-gradient(to bottom, #45a743 5%, #56b354 100%);
 }
 
 @media screen and (max-width: 1500px) {

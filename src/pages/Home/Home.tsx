@@ -34,7 +34,6 @@ export const Home: React.FC = () => {
   const initSlide = bestImages[getRandomArbitary(1, bestImages.length)];
   return (
     <section className={styles.root}>
-      <Header />
       <div className={styles.wrapper}>
         <Slider initialSlide={initSlide}>
           {images.map((img, index) => (
