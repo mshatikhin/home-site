@@ -2,7 +2,6 @@ import React from 'react';
 import styles from './Home.module.css';
 import { Slider } from '../../components/Slider';
 import { getRandomArbitary } from '../../util';
-import { Header } from '../../components/Header';
 
 const images = [
   require('./images/1.jpg'),
