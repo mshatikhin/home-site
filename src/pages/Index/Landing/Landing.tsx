@@ -1,6 +1,6 @@
 import React from 'react';
-import styles from './Home/Home.module.css';
-import { Link } from 'react-router-dom';
+import styles from './Landing.module.css';
+import { LinkButton } from '../../../components/Button/LinkButton';
 
 export const Landing: React.FC = () => (
   <main className={styles.landing}>
@@ -12,9 +12,9 @@ export const Landing: React.FC = () => (
         </span>
       </div>
       <div className={styles.center}>
-        <Link target="blank" className={styles.btnRequest} to="//vk.me/id2069565">
+        <LinkButton target="blank" to={'//vk.me/id2069565'}>
           Хочу фотосессию
-        </Link>
+        </LinkButton>
       </div>
     </div>
   </main>

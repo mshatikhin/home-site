@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './Home.module.css';
-import { Slider } from '../../components/Slider';
-import { getRandomArbitary } from '../../util';
+import { Slider } from '../../../components/Slider';
+import { getRandomArbitary } from '../../../util';
 
 const images = [
   require('./images/1.jpg'),

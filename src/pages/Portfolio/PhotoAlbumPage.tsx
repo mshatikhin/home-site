@@ -1,11 +1,12 @@
 import * as React from 'react';
-import { Link, RouteComponentProps } from 'react-router-dom';
+import { RouteComponentProps } from 'react-router-dom';
 import { PhotosetItems } from './PhotosetItems';
-import styles from '../Home/Home.module.css';
 import { RequestStatus } from '../../util';
 import { Photoset, PhotosetResponse } from './types';
 import { routes } from '../../routes';
 import { Loader } from '../../components/Loader';
+import { LinkButton } from '../../components/Button/LinkButton';
+import styles from './Portfolio.module.css';
 
 interface State {
   photoset: Photoset | null;
@@ -13,7 +14,7 @@ interface State {
 }
 
 const btnWrapperStyles: React.CSSProperties = { textAlign: 'center', marginBottom: 100 };
-const headerStyles = [styles.header, styles.center].join(' ');
+const headerStyles = [styles.photosetHeader, styles.center].join(' ');
 
 export const PhotoAlbumPage: React.FC<RouteComponentProps<{ id: string }>> = ({ match }) => {
   const { id } = match.params;
@@ -57,9 +58,7 @@ export const PhotoAlbumPage: React.FC<RouteComponentProps<{ id: string }>> = ({ 
           <div className={headerStyles}>{state.photoset.title}</div>
           <PhotosetItems photos={state.photoset.photo} />
           <div style={btnWrapperStyles}>
-            <Link className={styles.btnRequest} to={routes.portfolio}>
-              Вернуться в портфолио
-            </Link>
+            <LinkButton to={routes.portfolio}>Вернуться в портфолио</LinkButton>
           </div>
         </>
       )}

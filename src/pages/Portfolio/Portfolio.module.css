@@ -66,6 +66,11 @@
   height: 30px;
 }
 
+.photosetHeader {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
 .portfolioHeader {
   box-sizing: border-box;
   font-size: 16px;
@@ -87,6 +92,10 @@
 
 .verticalImage {
   margin: -15% 0 0 0;
+}
+
+.center {
+  text-align: center;
 }
 
 @media screen and (max-width: 1500px) {

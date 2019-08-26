@@ -1,0 +1,36 @@
+.landing {
+  background: #fff;
+  padding: 48px 0;
+}
+
+.wrapper {
+  margin: 0 auto;
+  max-width: 1080px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.center {
+  text-align: center;
+}
+
+.header {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+@media screen and (max-width: 1200px) {
+  .landing {
+    padding: 20px;
+  }
+
+  .wrapper {
+    border-radius: 0;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .header {
+    font-size: 1em;
+  }
+}

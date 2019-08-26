@@ -1,16 +1,18 @@
 import React from 'react';
-import { PortfolioPage } from './pages/Portfolio';
 import { BrowserRouter, Route } from 'react-router-dom';
 import { PhotoAlbumPage } from './pages/Portfolio/PhotoAlbumPage';
-import { IndexPage } from './pages/IndexPage';
-import { Layout } from './pages/Layout';
+import { Layout } from './components/Layout';
+import { ChunkLoader } from './ChunkLoader';
+import { LazyIndexPage, LazyPortfolioPage } from './lazyPages';
 
 export const App: React.FC = () => (
   <BrowserRouter>
-    <Layout>
-      <Route path="/" exact component={IndexPage} />
-      <Route path="/portfolio" exact component={PortfolioPage} />
-      <Route path="/portfolio/:id" exact component={PhotoAlbumPage} />
-    </Layout>
+    <React.Suspense fallback={<ChunkLoader />}>
+      <Layout>
+        <Route path="/" exact component={LazyIndexPage} />
+        <Route path="/portfolio" exact component={LazyPortfolioPage} />
+        <Route path="/portfolio/:id" exact component={PhotoAlbumPage} />
+      </Layout>
+    </React.Suspense>
   </BrowserRouter>
 );
