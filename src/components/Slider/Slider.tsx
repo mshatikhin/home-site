@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import styles from './Slider.module.css';
+import React, { Component } from "react";
+import styles from "./Slider.module.css";
 
 interface Props {
   initialSlide?: number;
@@ -18,28 +18,28 @@ export class Slider extends Component<Props, State> {
   state: State = {
     selectedSlide: 0,
     slideWidth: 0,
-    autoplay: true
+    autoplay: true,
   };
 
   static defaultProps = {
-    initialSlide: 0
+    initialSlide: 0,
   };
 
   componentDidMount() {
-    window.addEventListener('resize', this.setSliderSize);
+    window.addEventListener("resize", this.setSliderSize);
     this.setSliderSize();
     this.setAutoPlay();
   }
 
   componentWillUnmount() {
-    window.removeEventListener('resize', this.setSliderSize);
+    window.removeEventListener("resize", this.setSliderSize);
   }
 
   prev = () => {
     let selectedSlide = this.state.selectedSlide;
     const prevSlide = selectedSlide === 0 ? this.props.children.length - 1 : --selectedSlide;
     this.setState({
-      selectedSlide: prevSlide
+      selectedSlide: prevSlide,
     });
   };
 
@@ -47,16 +47,16 @@ export class Slider extends Component<Props, State> {
     let selectedSlide = this.state.selectedSlide;
     const nextSlide = selectedSlide === this.props.children.length - 1 ? 0 : ++selectedSlide;
     this.setState({
-      selectedSlide: nextSlide
+      selectedSlide: nextSlide,
     });
   };
 
   getWidthSlider = (): number => {
     const slider = this.sliderElement.current;
     if (slider) {
-      let computedStyle = getComputedStyle(slider);
-      let width = computedStyle.width;
-      const w = parseInt(width || '', 10);
+      const computedStyle = getComputedStyle(slider);
+      const width = computedStyle.width;
+      const w = parseInt(width || "", 10);
       return isNaN(w) ? 0 : w;
     }
     return 0;
@@ -64,11 +64,11 @@ export class Slider extends Component<Props, State> {
 
   setSliderSize = () => {
     this.setState({
-      slideWidth: this.getWidthSlider()
+      slideWidth: this.getWidthSlider(),
     });
   };
 
-  setAutoPlay = (stop: boolean = false) => {
+  setAutoPlay = (stop = false) => {
     if (stop) {
       clearInterval(this.autoplayInterval);
       this.autoplayInterval = null;

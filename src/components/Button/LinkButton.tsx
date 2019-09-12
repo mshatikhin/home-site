@@ -1,6 +1,6 @@
-import styles from './Button.module.css';
-import { Link } from 'react-router-dom';
-import * as React from 'react';
+import styles from "./Button.module.css";
+import { Link } from "react-router-dom";
+import * as React from "react";
 
 interface Props {
   to: string;

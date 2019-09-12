@@ -1,6 +1,6 @@
 export interface PhotosetsResponse {
   photosets: Photosets;
-  stat: 'ok';
+  stat: "ok";
 }
 
 export interface Photo {
@@ -31,7 +31,7 @@ export interface Photoset {
 
 export interface PhotosetResponse {
   photoset: Photoset;
-  stat: 'ok';
+  stat: "ok";
 }
 
 export interface Photosets {

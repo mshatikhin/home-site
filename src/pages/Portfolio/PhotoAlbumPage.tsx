@@ -1,27 +1,27 @@
-import * as React from 'react';
-import { RouteComponentProps } from 'react-router-dom';
-import { PhotosetItems } from './PhotosetItems';
-import { RequestStatus } from '../../util';
-import { Photoset, PhotosetResponse } from './types';
-import { routes } from '../../routes';
-import { Loader } from '../../components/Loader';
-import { LinkButton } from '../../components/Button/LinkButton';
-import styles from './Portfolio.module.css';
+import * as React from "react";
+import { RouteComponentProps } from "react-router-dom";
+import { PhotosetItems } from "./PhotosetItems";
+import { RequestStatus } from "../../util";
+import { Photoset, PhotosetResponse } from "./types";
+import { routes } from "../../routes";
+import { Loader } from "../../components/Loader";
+import { LinkButton } from "../../components/Button/LinkButton";
+import styles from "./Portfolio.module.css";
 
 interface State {
   photoset: Photoset | null;
   requestStatus: RequestStatus;
 }
 
-const btnWrapperStyles: React.CSSProperties = { textAlign: 'center', marginBottom: 100 };
-const headerStyles = [styles.photosetHeader, styles.center].join(' ');
+const btnWrapperStyles: React.CSSProperties = { textAlign: "center", marginBottom: 100 };
+const headerStyles = [styles.photosetHeader, styles.center].join(" ");
 
 export const PhotoAlbumPage: React.FC<RouteComponentProps<{ id: string }>> = ({ match }) => {
   const { id } = match.params;
 
   const [state, setState] = React.useState<State>({
     photoset: null,
-    requestStatus: RequestStatus.Default
+    requestStatus: RequestStatus.Default,
   });
 
   React.useEffect(() => {
@@ -36,13 +36,13 @@ export const PhotoAlbumPage: React.FC<RouteComponentProps<{ id: string }>> = ({ 
       .then((response: PhotosetResponse) => {
         setState({
           photoset: response.photoset,
-          requestStatus: RequestStatus.IsLoaded
+          requestStatus: RequestStatus.IsLoaded,
         });
       })
       .catch(() => {
         setState({
           photoset: null,
-          requestStatus: RequestStatus.IsFailed
+          requestStatus: RequestStatus.IsFailed,
         });
       });
   }, [id]);

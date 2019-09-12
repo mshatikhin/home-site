@@ -1,10 +1,10 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import * as serviceWorker from './serviceWorker';
-import { App } from './App';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import * as serviceWorker from "./serviceWorker";
+import { App } from "./App";
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById("root"));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
@@ -14,12 +14,12 @@ serviceWorker.register({
     const waitingServiceWorker = registration.waiting;
 
     if (waitingServiceWorker) {
-      waitingServiceWorker.addEventListener('statechange', (event: any) => {
-        if (event.target.state === 'activated') {
+      waitingServiceWorker.addEventListener("statechange", (event: any) => {
+        if (event.target.state === "activated") {
           window.location.reload();
         }
       });
-      waitingServiceWorker.postMessage({ type: 'SKIP_WAITING' });
+      waitingServiceWorker.postMessage({ type: "SKIP_WAITING" });
     }
-  }
+  },
 });

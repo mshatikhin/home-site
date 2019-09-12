@@ -1,8 +1,8 @@
-import * as React from 'react';
-import { PhotosetAlbum } from './types';
-import styles from './Portfolio.module.css';
-import { Link } from 'react-router-dom';
-import { routes } from '../../routes';
+import * as React from "react";
+import { PhotosetAlbum } from "./types";
+import styles from "./Portfolio.module.css";
+import { Link } from "react-router-dom";
+import { routes } from "../../routes";
 
 interface Props {
   album: PhotosetAlbum;

@@ -1,46 +1,36 @@
-import React from 'react';
-import styles from './Home.module.css';
-import { Slider } from '../../../components/Slider';
-import { getRandomArbitary } from '../../../util';
+import React from "react";
+import styles from "./Home.module.css";
+import Carousel from "react-images";
 
 const images = [
-  require('./images/1.jpg'),
-  require('./images/2.jpg'),
-  require('./images/3.jpg'),
-  require('./images/4.jpg'),
-  require('./images/5.jpg'),
-  require('./images/6.jpg'),
-  require('./images/7.jpg'),
-  require('./images/8.jpg'),
-  require('./images/9.jpg'),
-  require('./images/10.jpg'),
-  require('./images/11.jpg'),
-  require('./images/12.jpg'),
-  require('./images/13.jpg'),
-  require('./images/14.jpg'),
-  require('./images/15.jpg'),
-  require('./images/16.jpg'),
-  require('./images/17.jpg'),
-  require('./images/18.jpg'),
-  require('./images/19.jpg'),
-  require('./images/20.jpg'),
-  require('./images/21.jpg')
+  { src: require("./images/1.jpg") },
+  { src: require("./images/2.jpg") },
+  { src: require("./images/3.jpg") },
+  { src: require("./images/4.jpg") },
+  { src: require("./images/5.jpg") },
+  { src: require("./images/6.jpg") },
+  { src: require("./images/7.jpg") },
+  { src: require("./images/8.jpg") },
+  { src: require("./images/9.jpg") },
+  { src: require("./images/10.jpg") },
+  { src: require("./images/11.jpg") },
+  { src: require("./images/12.jpg") },
+  { src: require("./images/13.jpg") },
+  { src: require("./images/14.jpg") },
+  { src: require("./images/15.jpg") },
+  { src: require("./images/16.jpg") },
+  { src: require("./images/17.jpg") },
+  { src: require("./images/18.jpg") },
+  { src: require("./images/19.jpg") },
+  { src: require("./images/20.jpg") },
+  { src: require("./images/21.jpg") },
 ];
 
-const bestImages = [0, 1, 7, 9, 14, 15, 16, 18];
-
 export const Home: React.FC = () => {
-  const initSlide = bestImages[getRandomArbitary(1, bestImages.length)];
   return (
     <section className={styles.root}>
       <div className={styles.wrapper}>
-        <Slider initialSlide={initSlide}>
-          {images.map((img, index) => (
-            <div key={index} className={styles.imgWrap}>
-              <img src={img} className={styles.img} alt={'Изображение ' + index} />
-            </div>
-          ))}
-        </Slider>
+        <Carousel views={images} trackProps={{ infinite: true }} components={{ Footer: null }} />
       </div>
     </section>
   );

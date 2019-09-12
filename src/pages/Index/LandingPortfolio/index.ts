@@ -1,1 +1,1 @@
-export { LandingPortfolio as default } from './LandingPortfolio';
+export { LandingPortfolio as default } from "./LandingPortfolio";

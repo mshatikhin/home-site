@@ -2,7 +2,7 @@ export enum RequestStatus {
   Default,
   IsFetching,
   IsLoaded,
-  IsFailed
+  IsFailed,
 }
 
 export function getRandomArbitary(min: number, max: number) {

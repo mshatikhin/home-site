@@ -1,10 +1,10 @@
-﻿import React from 'react';
-import styles from './Portfolio.module.css';
-import { Loader } from '../../components/Loader';
-import fetch from 'cross-fetch';
-import { PhotosetAlbum, PhotosetsResponse } from './types';
-import { RequestStatus } from '../../util';
-import { PhotosetAlbumItem } from './PhotosetAlbumItem';
+﻿import React from "react";
+import styles from "./Portfolio.module.css";
+import { Loader } from "../../components/Loader";
+import fetch from "cross-fetch";
+import { PhotosetAlbum, PhotosetsResponse } from "./types";
+import { RequestStatus } from "../../util";
+import { PhotosetAlbumItem } from "./PhotosetAlbumItem";
 
 interface State {
   photosets: PhotosetAlbum[];
@@ -14,24 +14,24 @@ interface State {
 export const PortfolioPage: React.FC = () => {
   const [state, setState] = React.useState<State>({
     photosets: [],
-    requestStatus: RequestStatus.Default
+    requestStatus: RequestStatus.Default,
   });
 
   React.useEffect(() => {
     setState({ photosets: [], requestStatus: RequestStatus.IsFetching });
 
-    fetch('/api/albums')
+    fetch("/api/albums")
       .then(response => response.json())
       .then((response: PhotosetsResponse) => {
         setState({
           photosets: response.photosets.photoset,
-          requestStatus: RequestStatus.IsLoaded
+          requestStatus: RequestStatus.IsLoaded,
         });
       })
       .catch(() => {
         setState({
           photosets: [],
-          requestStatus: RequestStatus.IsFailed
+          requestStatus: RequestStatus.IsFailed,
         });
       });
   }, []);

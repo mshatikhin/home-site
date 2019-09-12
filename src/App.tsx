@@ -1,9 +1,9 @@
-import React from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
-import { PhotoAlbumPage } from './pages/Portfolio/PhotoAlbumPage';
-import { Layout } from './components/Layout';
-import { ChunkLoader } from './ChunkLoader';
-import { LazyIndexPage, LazyPortfolioPage } from './lazyPages';
+import React from "react";
+import { BrowserRouter, Route } from "react-router-dom";
+import { PhotoAlbumPage } from "./pages/Portfolio/PhotoAlbumPage";
+import { Layout } from "./components/Layout";
+import { ChunkLoader } from "./ChunkLoader";
+import { LazyIndexPage, LazyPortfolioPage } from "./lazyPages";
 
 export const App: React.FC = () => (
   <BrowserRouter>
