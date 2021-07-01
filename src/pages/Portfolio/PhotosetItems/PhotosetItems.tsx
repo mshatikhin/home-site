@@ -12,7 +12,7 @@ export const PhotosetItems: React.FC<Props> = React.memo(({ photos }) => {
   const [currentIndex, setCurrentImage] = React.useState(0);
   const [viewerIsOpen, setViewerIsOpen] = React.useState(false);
 
-  const images = photos.map(photo => ({
+  const images = photos.map((photo) => ({
     source: `https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}_b.jpg`,
   }));
 

@@ -23,12 +23,12 @@
 }
 
 .leftControl {
-  background: url('./images/controls.png') 0 -25px;
+  background: url("./images/controls.png") 0 -25px;
   left: 18px;
 }
 
 .rightControl {
-  background: url('./images/controls.png') 0 -63px;
+  background: url("./images/controls.png") 0 -63px;
   right: 18px;
 }
 

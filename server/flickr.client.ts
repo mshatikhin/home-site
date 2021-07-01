@@ -1,8 +1,8 @@
-import fetch from 'cross-fetch';
-import { Request, Response } from 'express';
+import fetch from "cross-fetch";
+import { Request, Response } from "express";
 
-const FLICKR_USER_ID = '124274905@N03';
-const FLICKR_API_KEY = '205ce46245f3c208bb2faae036f8738b';
+const FLICKR_USER_ID = "124274905@N03";
+const FLICKR_API_KEY = "205ce46245f3c208bb2faae036f8738b";
 
 export class FlickrClient {
   private static flickrUrl({ method, params }: { method: string; params: string }) {
@@ -11,11 +11,11 @@ export class FlickrClient {
 
   static async getAlbums(req: Request, res: Response) {
     try {
-      const url = FlickrClient.flickrUrl({ method: 'flickr.photosets.getList', params: '&primary_photo_extras=url_z' });
+      const url = FlickrClient.flickrUrl({ method: "flickr.photosets.getList", params: "&primary_photo_extras=url_z" });
       const response = await fetch(url);
       const resp = await response.json();
-      if (resp.stat !== 'ok') {
-        throw Error('Ошибка при попытке загрузить альбомы');
+      if (resp.stat !== "ok") {
+        throw Error("Ошибка при попытке загрузить альбомы");
       }
 
       res.status(200).send(resp);
@@ -27,13 +27,13 @@ export class FlickrClient {
   static async getPhotoset(req: Request, res: Response) {
     try {
       const url = FlickrClient.flickrUrl({
-        method: 'flickr.photosets.getPhotos',
-        params: `&photoset_id=${req.params.photosetId}`
+        method: "flickr.photosets.getPhotos",
+        params: `&photoset_id=${req.params.photosetId}`,
       });
       const response = await fetch(url);
       const resp = await response.json();
-      if (resp.stat !== 'ok') {
-        throw Error('Ошибка при попытке загрузить фотосет');
+      if (resp.stat !== "ok") {
+        throw Error("Ошибка при попытке загрузить фотосет");
       }
 
       res.status(200).send(resp);

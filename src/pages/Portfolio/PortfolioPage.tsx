@@ -21,7 +21,7 @@ export const PortfolioPage: React.FC = () => {
     setState({ photosets: [], requestStatus: RequestStatus.IsFetching });
 
     fetch("/api/albums")
-      .then(response => response.json())
+      .then((response) => response.json())
       .then((response: PhotosetsResponse) => {
         setState({
           photosets: response.photosets.photoset,
@@ -41,7 +41,7 @@ export const PortfolioPage: React.FC = () => {
       {state.requestStatus === RequestStatus.IsFetching ? (
         <Loader />
       ) : (
-        state.photosets.map(album => <PhotosetAlbumItem key={album.id} album={album} />)
+        state.photosets.map((album) => <PhotosetAlbumItem key={album.id} album={album} />)
       )}
     </div>
   );

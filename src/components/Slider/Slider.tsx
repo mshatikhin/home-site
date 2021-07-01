@@ -87,7 +87,7 @@ export class Slider extends Component<Props, State> {
         onClick={() => this.setAutoPlay(false)}
       >
         <div className={styles.slides} style={{ marginLeft: marginLeft }}>
-          {React.Children.map(this.props.children, child => (
+          {React.Children.map(this.props.children, (child) => (
             <div className={styles.imageWrap}>{child}</div>
           ))}
         </div>

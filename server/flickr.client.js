@@ -36,9 +36,10 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 exports.__esModule = true;
+exports.FlickrClient = void 0;
 var cross_fetch_1 = require("cross-fetch");
-var FLICKR_USER_ID = '124274905@N03';
-var FLICKR_API_KEY = '205ce46245f3c208bb2faae036f8738b';
+var FLICKR_USER_ID = "124274905@N03";
+var FLICKR_API_KEY = "205ce46245f3c208bb2faae036f8738b";
 var FlickrClient = /** @class */ (function () {
     function FlickrClient() {
     }
@@ -53,15 +54,15 @@ var FlickrClient = /** @class */ (function () {
                 switch (_a.label) {
                     case 0:
                         _a.trys.push([0, 3, , 4]);
-                        url = FlickrClient.flickrUrl({ method: 'flickr.photosets.getList', params: '&primary_photo_extras=url_z' });
+                        url = FlickrClient.flickrUrl({ method: "flickr.photosets.getList", params: "&primary_photo_extras=url_z" });
                         return [4 /*yield*/, cross_fetch_1["default"](url)];
                     case 1:
                         response = _a.sent();
                         return [4 /*yield*/, response.json()];
                     case 2:
                         resp = _a.sent();
-                        if (resp.stat !== 'ok') {
-                            throw Error('Ошибка при попытке загрузить альбомы');
+                        if (resp.stat !== "ok") {
+                            throw Error("Ошибка при попытке загрузить альбомы");
                         }
                         res.status(200).send(resp);
                         return [3 /*break*/, 4];
@@ -82,7 +83,7 @@ var FlickrClient = /** @class */ (function () {
                     case 0:
                         _a.trys.push([0, 3, , 4]);
                         url = FlickrClient.flickrUrl({
-                            method: 'flickr.photosets.getPhotos',
+                            method: "flickr.photosets.getPhotos",
                             params: "&photoset_id=" + req.params.photosetId
                         });
                         return [4 /*yield*/, cross_fetch_1["default"](url)];
@@ -91,8 +92,8 @@ var FlickrClient = /** @class */ (function () {
                         return [4 /*yield*/, response.json()];
                     case 2:
                         resp = _a.sent();
-                        if (resp.stat !== 'ok') {
-                            throw Error('Ошибка при попытке загрузить фотосет');
+                        if (resp.stat !== "ok") {
+                            throw Error("Ошибка при попытке загрузить фотосет");
                         }
                         res.status(200).send(resp);
                         return [3 /*break*/, 4];

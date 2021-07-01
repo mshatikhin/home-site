@@ -16,8 +16,6 @@ module.exports = {
     "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended",
     "prettier",
-    "prettier/react",
-    "prettier/@typescript-eslint",
   ],
   globals: {
     Atomics: "readonly",
@@ -34,7 +32,7 @@ module.exports = {
   },
   plugins: ["react", "prettier", "@typescript-eslint", "react-hooks"],
   rules: {
-    "prettier/prettier": ["error"],
+    "prettier/prettier": ["warn"],
 
     "no-unused-vars": 0,
     "no-restricted-globals": ["error"],

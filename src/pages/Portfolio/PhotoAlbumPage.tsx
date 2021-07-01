@@ -32,7 +32,7 @@ export const PhotoAlbumPage: React.FC<RouteComponentProps<{ id: string }>> = ({ 
     setState({ photoset: null, requestStatus: RequestStatus.IsFetching });
 
     fetch(`/api/albums/${id}`)
-      .then(response => response.json())
+      .then((response) => response.json())
       .then((response: PhotosetResponse) => {
         setState({
           photoset: response.photoset,
