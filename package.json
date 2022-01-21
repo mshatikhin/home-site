@@ -10,17 +10,14 @@
     "react-router-dom": "5.2.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
+    "start": "vite",
+    "build": "tsc && vite build",
+    "serve": "vite preview",
+    "test": "npm run test",
     "lint": "eslint --ext=ts,tsx src",
     "lint:fix": "eslint --ext=ts,tsx src --fix",
     "pretty": "prettier --write \"./**/*.{ts,tsx}\"",
     "postinstall": "husky install"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
   },
   "browserslist": [
     ">0.2%",
@@ -46,7 +43,8 @@
     "husky": "7.0.0",
     "lint-staged": "11.0.0",
     "prettier": "2.3.2",
-    "react-scripts": "4.0.3",
+    "@vitejs/plugin-react-refresh": "^1.3.6",
+    "vite": "^2.7.13",
     "typescript": "4.3.5"
   },
   "lint-staged": {

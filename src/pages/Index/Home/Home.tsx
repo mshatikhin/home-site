@@ -2,28 +2,50 @@ import React from "react";
 import styles from "./Home.module.css";
 import Carousel from "react-images";
 
+import source1 from "./images/1.jpg";
+import source2 from "./images/2.jpg";
+import source3 from "./images/3.jpg";
+import source4 from "./images/4.jpg";
+import source5 from "./images/5.jpg";
+import source6 from "./images/6.jpg";
+import source7 from "./images/7.jpg";
+import source8 from "./images/8.jpg";
+import source9 from "./images/9.jpg";
+import source10 from "./images/10.jpg";
+import source11 from "./images/11.jpg";
+import source12 from "./images/12.jpg";
+import source13 from "./images/13.jpg";
+import source14 from "./images/14.jpg";
+import source15 from "./images/15.jpg";
+import source16 from "./images/16.jpg";
+import source17 from "./images/17.jpg";
+import source18 from "./images/18.jpg";
+import source19 from "./images/19.jpg";
+import source20 from "./images/20.jpg";
+import source21 from "./images/21.jpg";
+
 const images = [
-  { source: require("./images/1.jpg").default },
-  { source: require("./images/2.jpg").default },
-  { source: require("./images/3.jpg").default },
-  { source: require("./images/4.jpg").default },
-  { source: require("./images/5.jpg").default },
-  { source: require("./images/6.jpg").default },
-  { source: require("./images/7.jpg").default },
-  { source: require("./images/8.jpg").default },
-  { source: require("./images/9.jpg").default },
-  { source: require("./images/10.jpg").default },
-  { source: require("./images/11.jpg").default },
-  { source: require("./images/12.jpg").default },
-  { source: require("./images/13.jpg").default },
-  { source: require("./images/14.jpg").default },
-  { source: require("./images/15.jpg").default },
-  { source: require("./images/16.jpg").default },
-  { source: require("./images/17.jpg").default },
-  { source: require("./images/18.jpg").default },
-  { source: require("./images/19.jpg").default },
-  { source: require("./images/20.jpg").default },
-  { source: require("./images/21.jpg").default },
+  { source: source1 },
+  { source: source2 },
+  { source: source3 },
+  { source: source4 },
+  { source: source5 },
+  { source: source6 },
+  { source: source7 },
+  { source: source8 },
+  { source: source9 },
+  { source: source10 },
+  { source: source11 },
+  { source: source12 },
+  { source: source13 },
+  { source: source14 },
+  { source: source15 },
+  { source: source16 },
+  { source: source17 },
+  { source: source18 },
+  { source: source19 },
+  { source: source20 },
+  { source: source21 },
 ];
 
 export const Home: React.FC = () => {
